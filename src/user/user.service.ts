@@ -28,7 +28,7 @@ export class UserService {
   }
 
   async updateUser(updateUserDto: UpdateUserDto) {
-    return this.userClient.emit('user:updateUser', updateUserDto);
+    return this.userClient.send('user:updateUser', updateUserDto);
   }
 
   async fetchUsersByProfile(profileId: number): Promise<Observable<User>> {
