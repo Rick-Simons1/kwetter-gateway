@@ -14,7 +14,7 @@ export class UserService {
     return 'Hello World!';
   }
 
-  async findUserById(id: number): Promise<Observable<User>> {
+  async findUserById(id: string): Promise<Observable<User>> {
     const result = this.userClient.send('user:find-by-id', id);
     return result;
   }

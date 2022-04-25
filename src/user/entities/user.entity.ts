@@ -5,7 +5,11 @@ export class User {
 
   username: string;
 
-  email: string;
+  hashtag: string;
+
+  discription: string;
+
+  authId: string;
 
   role: string;
 
