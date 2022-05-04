@@ -1,5 +1,4 @@
 import { Message } from 'src/message/entities/message.entity';
-import { Profile } from 'src/profile/entities/profile.entity';
 export class User {
   id: number;
 
