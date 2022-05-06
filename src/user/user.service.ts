@@ -19,6 +19,11 @@ export class UserService {
     return result;
   }
 
+  async findUserByHashtag(hashtag: string): Promise<Observable<User>> {
+    const result = this.userClient.send('user:find-by-hashtag', hashtag);
+    return result;
+  }
+
   async findUsers(): Promise<Observable<User>> {
     return this.userClient.send('user:find-all', {});
   }
