@@ -17,9 +17,10 @@ export class MessageService {
   }
 
   async findMessagesByUserId(userId: string): Promise<Observable<Message>> {
-    return this.messageClient.send('message:find-all-messages-by-userId', {
+    return this.messageClient.send(
+      'message:find-all-messages-by-userId',
       userId,
-    });
+    );
   }
 
   async findMessages(): Promise<Observable<Message>> {
