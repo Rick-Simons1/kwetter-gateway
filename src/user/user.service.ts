@@ -19,6 +19,16 @@ export class UserService {
     return result;
   }
 
+  async findAllFollowingByUserId(id: string): Promise<Observable<User>> {
+    const result = this.userClient.send('user:find-all-following-by-id', id);
+    return result;
+  }
+
+  async findAllFollowersByUserId(id: string): Promise<Observable<User>> {
+    const result = this.userClient.send('user:find-all-followers-by-id', id);
+    return result;
+  }
+
   async findUserByHashtag(hashtag: string): Promise<Observable<User>> {
     const result = this.userClient.send('user:find-by-hashtag', hashtag);
     return result;
@@ -26,6 +36,10 @@ export class UserService {
 
   async findUsers(): Promise<Observable<User>> {
     return this.userClient.send('user:find-all', {});
+  }
+
+  async findUsersByIds(ids: string[]): Promise<Observable<User>> {
+    return this.userClient.send('user:find-all-by-ids', ids);
   }
 
   async postUser(registerUserDto: RegisterUserRequest): Promise<void> {

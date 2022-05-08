@@ -15,6 +15,16 @@ export class UserController {
     return await this.userService.findUsers();
   }
 
+  @Get('following/:id')
+  async fetchAllFollowingByUserId(@Param('id') id: string) {
+    return await this.userService.findAllFollowingByUserId(id);
+  }
+
+  @Get('followers/:id')
+  async fetchAllFollowersByUserId(@Param('id') id: string) {
+    return await this.userService.findAllFollowersByUserId(id);
+  }
+
   @Get(':id')
   async findUserById(@Param('id') id: string) {
     return await this.userService.findUserById(id);

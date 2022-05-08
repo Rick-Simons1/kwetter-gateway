@@ -12,6 +12,10 @@ export class User {
 
   role: string;
 
+  following: string[];
+
+  followers: string[];
+
   messages: Message[];
 
   created_at: Date;
