@@ -1,6 +1,6 @@
 import { Controller, Get, Param, Post, Put } from '@nestjs/common';
 import { UserService } from './user.service';
-import { Observable } from 'rxjs';
+import { NotFoundError, Observable } from 'rxjs';
 import { User } from './entities/user.entity';
 import { Payload } from '@nestjs/microservices';
 import { RegisterUserRequest } from './dto/create-user.dto';
@@ -15,9 +15,24 @@ export class UserController {
     return await this.userService.findUsers();
   }
 
+  @Get('following/:id')
+  async fetchAllFollowingByUserId(@Param('id') id: string) {
+    return await this.userService.findAllFollowingByUserId(id);
+  }
+
+  @Get('followers/:id')
+  async fetchAllFollowersByUserId(@Param('id') id: string) {
+    return await this.userService.findAllFollowersByUserId(id);
+  }
+
   @Get(':id')
-  async findUserById(@Param('id') id: number) {
+  async findUserById(@Param('id') id: string) {
     return await this.userService.findUserById(id);
+  }
+
+  @Get('profile/:hashtag')
+  async findUserByHashtag(@Param('hashtag') hashtag: string) {
+    return await this.userService.findUserByHashtag(hashtag);
   }
 
   @Post()

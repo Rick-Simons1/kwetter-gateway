@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { ProfileController } from './profile.controller';
-import { ProfileService } from './profile.service';
+import { MessageService } from './message.service';
+import { MessageController } from './message.controller';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 
 @Module({
@@ -15,7 +15,7 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
       },
     ]),
   ],
-  controllers: [ProfileController],
-  providers: [ProfileService],
+  controllers: [MessageController],
+  providers: [MessageService],
 })
-export class ProfileModule {}
+export class MessageModule {}

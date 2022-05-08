@@ -1,4 +1,6 @@
 export class RegisterUserRequest {
   username: string;
-  email: string;
+  hashtag: string;
+  description: string;
+  authId: string;
 }

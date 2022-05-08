@@ -1,14 +1,22 @@
-import { Profile } from 'src/profile/entities/profile.entity';
+import { Message } from 'src/message/entities/message.entity';
 export class User {
   id: number;
 
   username: string;
 
-  email: string;
+  hashtag: string;
+
+  discription: string;
+
+  authId: string;
 
   role: string;
 
-  profiles: Profile[];
+  following: string[];
+
+  followers: string[];
+
+  messages: Message[];
 
   created_at: Date;
 }
