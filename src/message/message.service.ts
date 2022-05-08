@@ -8,12 +8,18 @@ import { Message } from './entities/message.entity';
 @Injectable()
 export class MessageService {
   constructor(
-    @Inject('User-service') private readonly messageClient: ClientProxy,
+    @Inject('Message-service') private readonly messageClient: ClientProxy,
   ) {}
 
   async findMessageById(id: number): Promise<Observable<Message>> {
     const result = this.messageClient.send('message:find-by-id', id);
     return result;
+  }
+
+  async findMessagesByUserId(userId: string): Promise<Observable<Message>> {
+    return this.messageClient.send('message:find-all-messages-by-userId', {
+      userId,
+    });
   }
 
   async findMessages(): Promise<Observable<Message>> {

@@ -7,10 +7,10 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
   imports: [
     ClientsModule.register([
       {
-        name: 'User-service',
+        name: 'Message-service',
         transport: Transport.TCP,
         options: {
-          port: 5001,
+          port: 5002,
         },
       },
     ]),
