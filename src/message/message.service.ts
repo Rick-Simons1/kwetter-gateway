@@ -8,7 +8,7 @@ import { Message } from './entities/message.entity';
 @Injectable()
 export class MessageService {
   constructor(
-    @Inject('User-service') private readonly messageClient: ClientProxy,
+    @Inject('Message-service') private readonly messageClient: ClientProxy,
   ) {}
 
   async findMessageById(id: number): Promise<Observable<Message>> {
