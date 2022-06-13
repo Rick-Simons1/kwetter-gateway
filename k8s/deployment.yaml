@@ -41,7 +41,11 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: gateway-ingress
+  annotations:
+    kubernetes.io/ingress.class: azure/application-gateway
 spec:
+  tls:
+    - secretName: kwettercertsecret
   rules:
     - http:
         paths:
