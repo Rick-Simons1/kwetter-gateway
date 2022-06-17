@@ -26,6 +26,11 @@ export class MessageController {
     return this.messageService.findMessages();
   }
 
+  @Get('all/:userId')
+  findAllMessagesByUserId(@Param('userId') userId: string) {
+    return this.messageService.findMessagesByUserId(userId);
+  }
+
   @Get(':id')
   findOneMessage(@Param('id') id: string) {
     return this.messageService.findMessageById(+id);
