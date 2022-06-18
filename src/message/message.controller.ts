@@ -34,7 +34,6 @@ export class MessageController {
     );
   }
 
-  @UseGuards(AuthorizationGuard)
   @Get()
   findAllMessages() {
     return this.messageService.findMessages();

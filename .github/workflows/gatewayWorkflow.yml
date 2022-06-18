@@ -13,7 +13,7 @@ env:
   NAMESPACE: 'default'
   SECRET: 'githubdeploymentsecret'
   APP_NAME: 'api'
-  APP_VERSION: 'v0.2.4'
+  APP_VERSION: 'v0.2.5'
 
 jobs:
   build:
