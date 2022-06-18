@@ -47,9 +47,4 @@ export class MessageController {
   updateMessage(@Body() updateMessageDto: UpdateMessageDto) {
     return this.messageService.updateMessage(updateMessageDto);
   }
-
-  // @Delete(':id')
-  // removeMessage(@Param('id') id: string) {
-  //   return this.messageService.remove(+id);
-  // }
 }
