@@ -6,6 +6,7 @@ import { Payload } from '@nestjs/microservices';
 import { RegisterUserRequest } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { AuthorizationGuard } from 'src/authorization/authorization.guard';
+import { validate } from 'class-validator';
 
 @Controller('user')
 export class UserController {
@@ -44,12 +45,30 @@ export class UserController {
   @UseGuards(AuthorizationGuard)
   @Post()
   async registerUser(@Payload() registerUserDto: RegisterUserRequest) {
-    this.userService.postUser(registerUserDto);
+    validate(registerUserDto, { validationError: { target: false } }).then(
+      (errors) => {
+        if (errors.length > 0) {
+          console.log('validation failed. errors: ', errors);
+        } else {
+          console.log('validation succeed');
+          return this.userService.postUser(registerUserDto);
+        }
+      },
+    );
   }
 
   @UseGuards(AuthorizationGuard)
   @Put()
   async updateUser(@Payload() updateUserDto: UpdateUserDto) {
-    return this.userService.updateUser(updateUserDto);
+    validate(updateUserDto, { validationError: { target: false } }).then(
+      (errors) => {
+        if (errors.length > 0) {
+          console.log('validation failed. errors: ', errors);
+        } else {
+          console.log('validation succeed');
+          return this.userService.updateUser(updateUserDto);
+        }
+      },
+    );
   }
 }
