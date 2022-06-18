@@ -3,7 +3,7 @@ import { IsString, Length, max } from 'class-validator';
 export class CreateMessageDto {
   @IsString()
   @Length(0, 100)
-  messagecontent: string;
+  messageContent: string;
 
   @IsString()
   userId: string;
