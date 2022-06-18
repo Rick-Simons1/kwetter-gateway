@@ -8,6 +8,7 @@ async function bootstrap() {
       'http://localhost:4200',
       'https://ashy-pebble-0272e8b03.1.azurestaticapps.net',
     ],
+    credentials: true,
   });
   await app.listen(4000);
 }
