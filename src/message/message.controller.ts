@@ -13,6 +13,7 @@ import { MessageService } from './message.service';
 import { CreateMessageDto } from './dto/create-message.dto';
 import { UpdateMessageDto } from './dto/update-message.dto';
 import { AuthorizationGuard } from 'src/authorization/authorization.guard';
+import { validate } from 'class-validator';
 
 @Controller('message')
 export class MessageController {
@@ -21,7 +22,16 @@ export class MessageController {
   @UseGuards(AuthorizationGuard)
   @Post()
   createMessage(@Body() createMessageDto: CreateMessageDto) {
-    return this.messageService.postMessage(createMessageDto);
+    validate(createMessageDto, { validationError: { target: false } }).then(
+      (errors) => {
+        if (errors.length > 0) {
+          console.log('validation failed. errors: ', errors);
+        } else {
+          console.log('validation succeed');
+          return this.messageService.postMessage(createMessageDto);
+        }
+      },
+    );
   }
 
   @UseGuards(AuthorizationGuard)
@@ -45,6 +55,16 @@ export class MessageController {
   @UseGuards(AuthorizationGuard)
   @Put()
   updateMessage(@Body() updateMessageDto: UpdateMessageDto) {
-    return this.messageService.updateMessage(updateMessageDto);
+    console.log(updateMessageDto);
+    validate(updateMessageDto, { validationError: { target: false } }).then(
+      (errors) => {
+        if (errors.length > 0) {
+          console.log('validation failed. errors: ', errors);
+        } else {
+          console.log('validation succeed');
+          return this.messageService.updateMessage(updateMessageDto);
+        }
+      },
+    );
   }
 }
