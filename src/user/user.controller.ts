@@ -60,15 +60,6 @@ export class UserController {
   @Put()
   async updateUser(@Payload() updateUserDto: UpdateUserDto) {
     console.log(updateUserDto);
-    validate(updateUserDto, { validationError: { target: false } }).then(
-      (errors) => {
-        if (errors.length > 0) {
-          console.log('validation failed. errors: ', errors);
-        } else {
-          console.log('validation succeed');
-          return this.userService.updateUser(updateUserDto);
-        }
-      },
-    );
+    return this.userService.updateUser(updateUserDto);
   }
 }
