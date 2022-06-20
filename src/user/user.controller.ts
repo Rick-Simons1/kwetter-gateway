@@ -36,7 +36,7 @@ export class UserController {
     return await this.userService.findUserById(id);
   }
 
-  @UseGuards(AuthorizationGuard)
+  
   @Get('profile/:hashtag')
   async findUserByHashtag(@Param('hashtag') hashtag: string) {
     return await this.userService.findUserByHashtag(hashtag);
