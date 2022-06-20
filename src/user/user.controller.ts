@@ -36,7 +36,6 @@ export class UserController {
     return await this.userService.findUserById(id);
   }
 
-  @UseGuards(AuthorizationGuard)
   @Get('profile/:hashtag')
   async findUserByHashtag(@Param('hashtag') hashtag: string) {
     return await this.userService.findUserByHashtag(hashtag);
@@ -60,15 +59,7 @@ export class UserController {
   @UseGuards(AuthorizationGuard)
   @Put()
   async updateUser(@Payload() updateUserDto: UpdateUserDto) {
-    validate(updateUserDto, { validationError: { target: false } }).then(
-      (errors) => {
-        if (errors.length > 0) {
-          console.log('validation failed. errors: ', errors);
-        } else {
-          console.log('validation succeed');
-          return this.userService.updateUser(updateUserDto);
-        }
-      },
-    );
+    console.log(updateUserDto);
+    return this.userService.updateUser(updateUserDto);
   }
 }

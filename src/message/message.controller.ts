@@ -34,13 +34,11 @@ export class MessageController {
     );
   }
 
-  @UseGuards(AuthorizationGuard)
   @Get()
   findAllMessages() {
     return this.messageService.findMessages();
   }
 
-  @UseGuards(AuthorizationGuard)
   @Get('all/:userId')
   findAllMessagesByUserId(@Param('userId') userId: string) {
     return this.messageService.findMessagesByUserId(userId);
